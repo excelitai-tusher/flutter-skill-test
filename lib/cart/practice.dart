@@ -6,6 +6,8 @@ import '../category_provider/category_provider.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import 'cart_page_2.dart';
+
 class ProductScreen extends StatefulWidget {
   const ProductScreen({Key? key}) : super(key: key);
 
@@ -127,26 +129,30 @@ class _ProductScreenState extends State<ProductScreen>
                                 padding: const EdgeInsets.all(8.0),
                                 child: Column(
                                   children: [
-                                    Container(
-                                      height:200,
-                                      width: 200,
-                                      decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(20),
-
-                                        image: DecorationImage(
-                                          image: productProvider.data_list.length != null
-                                              ? NetworkImage(
-                                     productProvider.data_list[index]['image'].toString()
-                                          ) : NetworkImage(
-                                            'https://st3.depositphotos.com/23594922/31822/v/600/depositphotos_318221368-stock-illustration-missing-picture-page-for-website.jpg',
+                                    InkWell(
+                                      onTap: (){
+                                        Navigator.push(context, MaterialPageRoute(builder: (context)=> CartPage2()));
+                                      },
+                                      child: Container(
+                                        height:200,
+                                        width: 200,
+                                        decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(20),
+                                          image: DecorationImage(
+                                            image: productProvider.data_list.length != null
+                                                ? NetworkImage(
+                                       productProvider.data_list[index]['image'].toString()
+                                            ) : NetworkImage(
+                                              'https://st3.depositphotos.com/23594922/31822/v/600/depositphotos_318221368-stock-illustration-missing-picture-page-for-website.jpg',
+                                            ),
+                                            fit: BoxFit.cover,
                                           ),
-                                          fit: BoxFit.cover,
+
+                                            // image: DecorationImage(
+                                            //     image: productProvider.data_list[index]
+                                            //         ['image'])
+
                                         ),
-
-                                          // image: DecorationImage(
-                                          //     image: productProvider.data_list[index]
-                                          //         ['image'])
-
                                       ),
                                     ),
                                     Text(
